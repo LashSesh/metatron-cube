@@ -1,0 +1,5 @@
+[project]
+name = "metatron_cube"
+version = "0.1.0"
+description = "Implementation of the Metatron Cube logic engine."
+requires-python = ">=3.10"
