@@ -1,10 +1,12 @@
 
 # src/master_agent.py
 
-from src.spiralmemory import SpiralMemory
-from src.gabriel_cell import GabrielCell
-from src.mandorla import MandorlaField
-from src.seraphic_feedback import SeraphicFeedbackModule
+"""Master agent combining SpiralMemory, GabrielCells, MandorlaField and SeraphicFeedback."""
+
+from .spiralmemory import SpiralMemory
+from .gabriel_cell import GabrielCell
+from .mandorla import MandorlaField
+from .seraphic_feedback import SeraphicFeedbackModule
 
 import numpy as np
 
@@ -14,12 +16,13 @@ class MasterAgent:
     Blueprint-gemäßen Resonanz-Workflow ausführen (Input bis Decision).
     """
 
-    def __init__(self, n_cells: int = 4):
+    def __init__(self, n_cells: int = 4, mandorla_alpha: float = 0.5, mandorla_beta: float = 0.5):
         self.spiral_memory = SpiralMemory(alpha=0.07)
         self.gabriel_cells = [GabrielCell() for _ in range(n_cells)]
         for i in range(n_cells-1):
             self.gabriel_cells[i].couple(self.gabriel_cells[i+1])
-        self.mandorla = MandorlaField()
+        # initialise MandorlaField with dynamic threshold parameters
+        self.mandorla = MandorlaField(alpha=mandorla_alpha, beta=mandorla_beta)
         self.seraphic = SeraphicFeedbackModule()
         self.last_decision = None
 
