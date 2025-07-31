@@ -20,13 +20,13 @@ import numpy as np
 
 # Use explicit relative imports so that the FastAPI app can locate the
 # package modules when the server is run via ``uvicorn metatron_cube.main:app``.
-from .src.master_agent import MasterAgent
-from .src.cube import MetatronCube
-from .src.qdash_agent import QDASHAgent
-from .src.resonance_tensor import ResonanceTensorField
-from .src.meta_interpreter import MetaInterpreter
-from .src.tensor_network import TensorNetwork
-from .src.quantum import QuantumState
+from src.master_agent import MasterAgent
+from src.cube import MetatronCube
+from src.qdash_agent import QDASHAgent
+from src.resonance_tensor import ResonanceTensorField
+from src.meta_interpreter import MetaInterpreter
+from src.tensor_network import TensorNetwork
+from src.quantum import QuantumState
 
 class AgentInput(BaseModel):
     data: List[Any]
